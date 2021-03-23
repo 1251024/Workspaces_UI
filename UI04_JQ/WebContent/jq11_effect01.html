@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>effect01</title>
+
+    <style type="text/css">
+
+        img{
+            width: 200px;
+            height: 200px;
+            position: absolute;     /* 위치 고정 : 창이 커지든 작아지든 */
+            left: 200px;
+            top: 100px;
+        }
+
+        p{
+            width: 100px;
+            border: 1px solid red;
+            position: absolute;     /* 위치 고정 : 창이 커지든 작아지든 */
+            left: 10px;
+            display: none;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(function(){       //모두 다 로딩된 이후에, 만들어진 이후에 함수시작하겠다
+            $("b").click(function(){            //b를 클릭하면
+                $("p").toggle();                //p를 숨기기, 보이기를 할 수 있다.
+                $("p").each(function(i){        //.each : 일치하는 요소마다 함수를 실행하겠다
+                    $(this).animate({           //this실행될때마다 애니메이션 효과가 실행된다.
+                        "top":50*(i+1)+"px"     //위에서 50*(i+1)px씩 -0번지는50px, 1번지는100px
+                    }, 1000);                   // 1000ms(1초동안)길이만큼
+                });
+            });
+            $("p").bind("click",function(){                 //p를 클릭하면
+                var ele = $(this)                           //선택된 this는 변수ele담을건데
+                ele.css("background", "hotpink");           //ele는 핫핑크백그라운드에
+                ele.siblings("p").css("background-color","");   //선택되지않은 ele의 p의 형제자매를 찾아 백그라운드를 없앤다
+
+                if(ele.is("p:contains(hide)")){     //만약 선택된애가 hide면
+                    $("img").hide();                //이미지 숨기기
+                }
+                if(ele.is("p:contains(show)")){     //만약 선택된애가 show면
+                    $("img").show();                //이미지 보이기
+                }
+                if(ele.is("p:contains(toggle)")){   //만약 선택된애가 toggle이면
+                    $("img").toggle();              //이미지를 숨기고 보이기
+                }
+                if(ele.is("p:contains(slideUp)")){      //만약 선택된애가 slideUp이면
+                    $("img").slideUp();                 //이미지를 슬라이딩 동작으로 숨긴다
+                }
+                if(ele.is("p:contains(slideDown)")){    //만약 선택된애가 slideDown이면
+                    $("img").slideDown();               // 이미지를 슬라이딩 동작으로 보인다
+                }
+                if(ele.is("p:contains(slideToggle)")){  //만약 선택된애가 slidetoggle이면
+                    $("img").slideToggle();             //이미지를 슬라이딩동작으로 숨기고 보인다
+                }
+                if(ele.is("p:contains(fadeOut)")){       //만약 선택된애가 fadeOut이면
+                    $("img").fadeOut();                 //이미지를 투명하게 숨긴다
+                }
+                if(ele.is("p:contains(fadeIn)")){        //만약 선택된애가 fadeOut이면
+                    $("img").fadeIn();                  //이미지를 투명하게 보인다
+                }
+                /*
+                if(ele.is("p:contains(fadeTo)")){       //만약 선택된애가 fadeTo면
+                    $("img").fadeTo(4000, 0.2);         //이미지를 4000ms속도만큼 불투명도 0.2로 바꾼다
+                }
+                */
+                if(ele.is("p:contains(fadeToggle)")){   //만약 선택된애가 fadeToggle면
+                    $("img").fadeToggle();             //이미지를 투명하게 숨기고 보인다
+                }
+                if(ele.is("p:contains(animate)")){      //만약 선택된애가 animate면
+                    $("#img01").animate({               //이미지는 애니메이션 효과를 보일건데
+                        "width":"500px",                //가로세로 각 500px으로 커지고
+                        "height":"500px",               
+                        "left":"600px",                 //왼쪽으로부터 600px옮겨지고
+                        "top":"0px"                     //위에서는 0px로 고정되며
+                    }, 2000);                           //2000ms의 속도로 애니메이트될거다
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    
+    <b>이펙트 메서드</b>
+
+    <div>
+        <p>hide()</p>
+        <p>show()</p>
+        <p>toggle()</p>
+        <p>slideUp()</p>
+        <p>slideDown()</p>
+        <p>slideToggle()</p>
+        <p>fadeOut()</p>
+        <p>fadeIn()</p>
+        <p>fadeTo()</p>
+        <p>fadeToggle()</p>
+        <p>animate()</p>
+    </div>
+    <img id="img01" alt ="image" src = "resources/image/img01.png">
+</body>
+</html>

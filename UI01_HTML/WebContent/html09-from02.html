@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>09.form-select</title>
+</head>
+<body>
+
+	<h1>select 요소</h1>
+
+	<form action="#" method="get">
+		<fieldset>
+			<legend>여러줄 글 상자와 목록상자</legend>
+			<!-- 
+cols보여지는 줄 
+셀렉트는 옵션선택
+라벨은 라벨
+
+과목은 하나선택해주는거고
+옵션그룹은 선택 못함
+셀렉트네임에 옵션에 밸류가 들어감
+&select01=css 
+셀렉트 옵션안에 밸류임-->
+
+			<p>
+				<label for="reply">답글</label><br />
+				<textarea rows="3" cols="30" id="reply" name="re"></textarea>
+			</p>
+
+			<p>
+				과목선택 <select name="select01">
+					<option value="html">HTML</option>
+					<option value="css">CSS</option>
+					<option value="js">JavaScript</option>
+					<option value="jq">JQery</option>
+				</select>
+			</p>
+
+			<p>
+				점심메뉴 <select name="select02">
+					<optgroup label="한식">
+						<option value="kimchi-ZZigae">김치찌개</option>
+						<option value="bulgogi">불고기</option>
+						<option value="duenjang-zzigae">된장찌개</option>
+						<option value="samketang">삼계탕</option>
+					</optgroup>
+
+					<optgroup label="분식">
+						<option value="jjolmean">쫄면</option>
+						<option value="dducbokki">떡볶이</option>
+						<option value="sun-dae">순대</option>
+					</optgroup>
+				</select>
+			</p>
+			<input type="submit" value="전송"/>
+			<!-- 주소창에 입력한게 들어가짐
+			http://localhost:8787/UI01_HTML/html09-from02.html?re=ffffff&select01=html&select02=kimchi-ZZigae# -->
+
+		</fieldset>
+	</form>
+</body>
+</html>

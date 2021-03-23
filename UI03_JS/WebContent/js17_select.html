@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select</title>
+<script type="text/javascript">
+
+
+	//select 태그의 속성 : option, selectedIndex, selected
+	function show01(){
+		var food = document.getElementsByName("food")[0];
+		//selectedIndex:선택한 option의 index 반환
+		var idx = food.selectedIndex; //선택된 옵션값이 몇번째 인덱스인지 반환
+		//options:select 태그가 가진 option 태드글 //배열식을 보니까 노드리스트 배열로 가지고 오는것
+		var foodName = food.options[idx].value; //푸드옵션의 밸류값을 가지고와서 호출한다
+		alert(foodName + "먹어야지!");
+	}
+
+	function show02(){
+		var res="";
+		//1. select(name=food)가져오자. food 가져와야함 //ById빼고 다 노드리스트
+		var food = document.getElementsByName("food")[1];//select태그가 2개인데 0번지, 1번지 둘다 food여서 1번지꺼만 가져오니까 node가 됨
+		alert(food + " : " +typeof(food)); 					//[object HTMLSelectElement] : object
+		alert(food.options +" : "+typeof(food.options));	//[object HTMLOptionsCollection] : object
+			
+		//2. food가 가진 옵션들을 반복
+		for(var i=0;i<food.options.length;i++){ //food라는 셀렉트 태그안의 옵션들
+			
+			//3. 옵션들 중 선택되어 있다면, res +=옵션의 value
+			if(food.options[i].selected){	
+				//food=node /HTML SELECT ELEMEN	
+				// food.options 하면 배열이 됨[option, option, option] 셀렉트태그가 가지고있는 옵션배열
+				
+				//res += 옵션의 value
+				res += food.options[i].value+",";
+			}
+		}
+
+		//4. 출력
+		alert(res+" 먹고시퓨다..!");
+		
+	}
+
+</script>
+
+
+</head>
+<body>
+
+	<h1>음식 선택하기</h1>
+	
+	<form>
+	<!-- onchange : change라는 이벤트가 발생하면 show01 을 호출하라/on어쩌구는 이벤트다 -->
+		<select name="food" onchange="show01();">
+			<option>--선택--</option>
+			<option value = "한우스테이크">한우스테이크</option>
+			<option value = "물냉면">물냉면</option>
+			<option value = "스시">스시</option>
+			<option value = "샌드위치">샌드위치</option>
+			<option value = "육회">육회</option>
+		</select>
+		<br/><br/><br/><br/><br/><br/>
+		<select name="food" multiple="multiple" size="3"> <!-- 멀티플은 속성 -->
+			<option value = "한우스테이크">한우스테이크</option>
+			<option value = "물냉면">물냉면</option>
+			<option value = "스시">한우스테이크</option>
+			<option value = "샌드위치">샌드위치</option>
+			<option value = "육회">육회</option>
+		</select>
+		<input type = "button" value="선택" onclick="show02();"/>
+	</form>
+	
+</body>
+</html>

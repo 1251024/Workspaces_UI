@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03.함수02</title>
+
+<script type="text/javascript">
+	//명시적 함수
+	function func01(){
+		alert("명시적 함수");
+	}
+	
+	//익명 함수
+	var func02 = function (){
+		alert("익명 함수");
+	}
+	//function은 이릅없는 함수인데 변수에 담아줌, 변수에 저장
+	//함수= 값, func02라는 변수에 함수(펑션기능자체가 값)이 저장, 변수안에 함수값이 들어감
+	//해당 변수에 들어간 실제값이 함수니까 함수를 호출하자 -> func02()
+	
+	
+	function literalPrn(literal){
+		literal("안녕하세요, 리터럴 입니다.","!!!");
+	}
+	//function, 함수명, (파라미터) 라는  형태
+	//(literal)->리터럴이 변수, 파라미터, 함수의 괄호안에 var생략하고 변수이름만 쓰면 됨
+	
+	function func03(){
+		//함수가 파라미터로 전달됨 (함수 리터럴)
+		literalPrn(
+						function(msg, a){
+							alert(msg+a);
+						}
+					);
+	}
+	//msg는 변수 파라미터
+	//함수가 값으로 전달된다
+	//literal= 값 자체
+	//literalPrn함수를 호출하는데 그안에 값을 넣어서 호출함
+	//리터럴 변수에 함수값이 저장됨
+	//변수파라미터에 function(){} 호출함, 값으로 전달, 전달된값이 함수 한게 함수, 함수니까 호출가능
+	//function(msg){alert(msg);} 이만큼이 literal로 가서 호출되는거
+	//(function(msg)->("안녕하세요, 리터럴 입니다.")로 전달됨
+			//함수로 literal을 호출했기때문에 function(msg)이 함수로써 동작한것
+	//parameter:외부에서 전달된 값을 내부에서 사용하기 위한 "변수"
+	//argument: 외부에서 전달되는 "값"
+	//자바스크립트가 타입이 작성하는거에 따라서 바뀌기때문에, 변수에 저장해놓은 함수를 쓰기위해 ( )를 붙여서 사용한다
+	
+	
+	//1. function(msg) -> literal
+
+	//2. literal = function(msg) {...}
+
+	//3. literal("a") = function("a") {...}
+
+	
+	//arguments(밑에 있는 객체):함수에 전달되는 아규먼트들을 배열의 값으로 가짐
+	function valTest(){
+		var res="";
+		
+		for(var i=0; i<arguments.length; i++){
+			res += arguments[i];
+		}
+		
+		alert(res);
+	}
+	
+	//closure:외부함수 안에 있는 내부함수. (내부함수에서 외부함수에 있는 변수, 파라미터 등 접근 가능)
+	//클로져 함수는 큰애 안에 작은애가 있는데 작은애가 큰애거 가져와서 사용할 수 있다
+	function closureTest(val){
+		var msg="!!!";
+		
+		function addVal(){
+			alert(val+msg);
+		}
+		
+		return addVal;//addVal이라는 함수자체(값) 리턴
+		//리턴:메소드가 기능수행하고 난뒤 반환하는 값의 타입
+	}
+	
+	function amEdu(val){
+		closureTest(val)();//closureTest라는 함수를 호출 /값은 function addVal(){alert(val+msg);}
+		//1. closureTest(val) 호출->addVal 리턴
+		//2. addVal();
+		//3. alert(val+msg); 실행
+	}
+</script>
+
+</head>
+<body>
+
+	<h1>함수!!</h1>
+	
+	<h2>함수의 종류</h2>
+	<p onclick="func01()">명시적 함수</p>
+	<p onclick="func02()">익명 함수</p>
+	<p onclick="func03()">함수 리터럴(리터럴 함수)</p>
+	
+	<h2 onclick="valTest('kh', '정보교육원', 'qclass');">args(arguments)</h2>
+	
+	<h2>클로저(내부함수)</h2>
+	<label for = "am">오전강의</label>
+	<input type="text" id="am" value=""/>
+	<input type="button" value="클릭!" onclick="amEdu(am.value);"/>
+	<!-- am.value 는 id가 am인 인풋타입 텍스트의 값을 가져오겠다 -->
+	
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	//입력부분의 데이터를 가져오는 부분
+	function tableVal(){
+		//form태그들 가져와서, 그 중 index가 0인 form 태그(node  list)
+		var doc = document.forms[0];	//forms 0번지 값을 doc에 저장.form태그가 1개밖에 없어서 0번지밖에 안됨
+		//form 액션속성에 있는 경로에 전송해주기 위해 필요한 속성
+		//doc.id.value = doc이라는 form태그가 가진, name=' id'인 태그의, value값
+		var vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value];
+		//doc에 각각 입력되는 값들을 vals에 저장	..값을 vals 변수에 배열 형태로 저장한다.
+		
+		//유효값 처리	//만약에 값이 정확히 입력되지 않았다면 알람을 띄운다 하지만 저장은 됨
+		for (var i = 0 ; i < vals.length; i++) {	
+			//만약 i번지값이 null이거나 비어있는값이거나 (값이 입력되지 않거나) undefined(정의되지않은,존재하지않으)면 함수 종료
+			if (vals[i] == null || vals[i] == "" || vals[i] == undefined) {
+				alert("모든 항목을 입력해 주세요");
+				//함수자체를 종료시킨다
+				return;//break; 브레이크는 반복문을 종료시킴
+			}
+		}
+		//추가버튼 눌렀을때 createRow함수 호출 (값이 전달되서 만든다) //addtr이란 속성을 가져와 appendChild :하위로 붙인다
+		document.getElementById("addtr").appendChild(createRow(vals));
+	}
+	
+	//로우생성
+	function createRow(vals){			
+		var tr = document.createElement("tr");		//<tr></tr>							//<tr></tr>
+		for (var i = 0; i < vals.length; i++) {		//i=0일때-><td></td> 					//i=0 -> <tr><td>doc.id.value</td></tr>
+			var td = document.createElement("td");	//td를 생성 							//i=1 -> <tr><td>doc.id.value</td><td>doc.pw.value</td></tr>
+			td.textContent = vals[i];				//doc.id.value 를 td사이에 추가			//i=2 -> <tr><td>doc.id.value</td><td>doc.pw.value</td><td>doc.addr.value</td></tr>
+			tr.appendChild(td);						//tr사이에에 추가						//i=3 -> <tr><td>doc.id.value</td><td>doc.pw.value</td><td>doc.addr.value</td><td> doc.phone.value</td></tr>
+		}
+		//삭제버튼 생성
+		var dTd = document.createElement("td");
+		dTd.innerHTML = "<input type='button' value='삭제' onclick='delRow(this)'/>";	//this는 input태그
+		//<td><input type='button' value='삭제' onclick='delRow(this)'/></td>
+		tr.appendChild(dTd);
+		//appendChild:자식요소 뒤로 넣어줌
+		/*	
+			<tr>
+				<td>doc.id.value</td>													//id값
+				<td>doc.pw.value</td>													//pw값
+				<td>doc.addr.value</td>													//addr값
+				<td> doc.phone.value</td>												//phone값
+				<td><input type ='button' value='삭제' onclick='delRow(this)'/></td>		//삭제값
+			</tr>
+		*/
+		return tr;
+	}
+	
+	//전체삭제
+	function deleteVal(){		//addtr id를 가진 자식요소를 전체삭제
+		var tbody = document.getElementById("addtr");
+		while(tbody.hasChildNodes()){
+			//hasChildNodes:자식 노드가 있는지 없는지 확인 //hasnext느낌
+			tbody.removeChild(tbody.lastChild);	
+			//밑에서 거부터 삭제
+		}
+	}
+	
+	
+	//로우삭제버튼작동
+	function delRow(ele){
+		//tr찾자
+		var delTr = ele.parentNode.parentNode;		//삭제 ele 버튼의 부모 (td)의 부모 (tr)찾아서
+		//tbody를 찾자
+		var tbody = document.getElementById("addtr");		
+		//tbody의 자식 tr을 삭제
+		tbody.removeChild(delTr);			
+	}
+
+
+</script>
+
+</head>
+<body>
+
+	<form>
+		<table id="intable">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="text" name="pw"></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td><input type="text" name="addr"></td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td><input type="text" name="phone"></td>
+			</tr>
+		</table>
+		<input type="button" value="추가" onclick="tableVal();"/>
+		<input type="button" value="전체삭제" onclick="deleteVal();"/>
+	</form>
+	<div id="addtable">
+		<table border="1" id="ctb">
+			<col width="100px" />
+			<col width="100px" />
+			<col width="300px" />
+			<col width="200px" />
+			<col width="100px" />
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>비밀번호</th>
+					<th>주소</th>
+					<th>전화번호</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody id="addtr"></tbody>
+		</table>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+

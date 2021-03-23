@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>갤러리</title>
+
+<style type="text/css">
+
+	a>img{width:50px; height: 50px;}
+	#gallery{width:200px; height:200px;}
+	p{width:350px; height:250px;}
+	img{vertical-align:middle;}
+	a{text-decoration:none;} 
+
+</style>
+
+<script type="text/javascript">
+
+	var num=1;
+	
+	function prevGallery(){//왼쪽으로
+		num--;
+		
+		if(num<1){
+			num=6;
+		}
+		//이미지태그 찾아오기
+		document.getElementById("gallery").src="resources/image/img0"+num+".png";
+		
+		//이벤트 전파 막기
+		return false;
+		//네이버로 가는거 막아주는 거
+	}
+	
+	function nextGallery(){
+		num++;
+		
+		if(num>6){
+			num=1;
+		}
+		
+		document.getElementById("gallery").src="resources/image/img0"+num+".png";
+
+		return false;
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="galleryWrap">
+		<p>
+			<a href="http://www.naver.com" onclick="return prevGallery();">
+				<img alt="이전그림" src="resources/image/arrowleft.png"/>
+			</a>
+			
+			<img id="gallery" alt="갤러리" src="resources/image/img01.png"/><!-- 이미지태그 -->
+			
+			<a href="#next" onclick ="nextGallery();">
+				<img alt="다음그림" src="resources/image/arrowright.png"/>
+			</a>
+		</p>
+	</div>
+
+</body>
+</html>

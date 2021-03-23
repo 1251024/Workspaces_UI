@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replace</title>
+
+<script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+
+<script>
+
+    $(function(){
+        $("button:first").click(function(){
+            //target.replaceWith(newContent);
+            $("p").replaceWith("<p><b>replaceWith</b></p>");
+            //replaceWith:새콘텐츠로 교체하고 제거된 요소 집합을 반환
+            //newContent에는 문자열, 엘리먼트, 배열, function 들어갈 수 있음
+        });
+        $("button:last").click(function(){
+            //newContent.replaceAll(target);
+            $("<p><b>replaceAll</b></p>").replaceAll("p");
+            //replaceAll:일치하는 요소 집합으로 바꾼다 //replaceWith와 방법은 비슷 소스와 대상이 반대
+            //function은 안됨
+        });
+    });
+
+</script>
+</head>
+<body>
+    <div>
+        <p>DOM 대체</p>
+    </div>
+
+    <button>바꾸기 (replaceWith)</button>
+    <br>
+    <button>바꾸기 (replaceAll)</button>
+</body>
+</html>

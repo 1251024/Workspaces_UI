@@ -1,0 +1,116 @@
+
+/* 타입 선택자 */
+
+pre{
+	text-align:center;
+	
+}
+
+h1{
+	color:#BC55EF;
+}
+
+/* id 선택자 */
+#si01{
+	color:red;
+}
+
+#si02{
+	color:green;
+}
+#si03{
+	background-color:blue;
+	color:white;
+}
+
+/* class 선택자 */
+.scls{
+	color:lightgray;
+}
+
+/* 전체 선택자 */
+*{
+	text-align:right;
+}
+
+/* 자식 선택자 */
+#at>p{
+	color:#2CE0BC;
+}
+/* at라는 id를 가진애의 자식요소 중에 p를 찾아라 */
+/*자식1은 div의 p라서 */
+
+#at>div>p{
+	background-color:black;
+	color:white;
+}
+/* div의 p와 div의 모든것인지 주의*/
+
+
+/* 하위 선택자 */
+div span{
+	background-color:fuchsia;
+}
+
+/* 인접 선택자 */
+/* 인접 선택자는 더하기로 표시 +뒤에 나오는것에 적용 */
+h3+b{
+	color:silver;	
+}
+b+span{
+	color:gold;
+}
+
+
+/* 속성 선택자 */
+/* title이라는 속성을 가진, li[id]면 id인 속성을 가진*/
+p[title]{
+	color:lime;
+}
+
+p[title="b"]{
+	background-color:yellow;
+}
+
+/* 가상 클래스 선택자 */
+/* link 안간애, visited는 갔다온애, hover는 손가락 올렸을때,
+ active는 클릭하는순간, checked는 체크되면 커져라*/
+a:link{
+	color:hotpink;
+	font-size:20pt;
+}
+a:visited{
+	color:skyblue;
+	font-size:50pt;
+}
+a:hover{
+	background-color:maroon;
+	font-size:35pt;
+}
+a:active{
+	color:red;
+}
+input:checked{
+	width:100px;
+	height:100px;
+}
+
+
+/* 그룹 선택자 */
+p, pre, strong{
+	background-color:green;
+	color :yellow;
+}
+
+/* 종속 선택자 */
+
+li.scls01{
+	background-color:red;
+}
+
+li.scls02#sidul{
+	font-size:40px;
+}
+
+
+

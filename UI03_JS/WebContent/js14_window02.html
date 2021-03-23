@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>팝업창</title>
+<!-- div 팝업창 -->
+<script type="text/javascript">
+	function test(){
+		var val=document.getElementsByName("test")[0].value;
+		opener.document.getElementsByTagName("h1")[1].innerHTML=val; //h1은 팝업창 만들기글이 입력된 글로 바뀜
+		//getElementsByTagName: 지정된 태그 이름을 가진 문서의 모든 요소를 ​​가져옵니다.
+		//opener:부모창, 나라는 프로세스를 만들어 준 애 open.window에서 h1이라는 태그를 찾을거야, 그중에서 1번지태그의 값을 넣어줄거야 (써준값)
+		close();
+	}
+</script>
+
+</head>
+<body>
+
+	<input type="text" name="test"/><!-- 내가 써주는 값 -->
+	<input type="button" onclick="test()" value="전달"/>
+	<input type="button" onclick="self.close()" value="창닫기"><!-- 나 종료시켜줘, 현재 내 창 끄기, self.은 나 자바의 this와 같음 -->
+
+
+</body>
+</html>

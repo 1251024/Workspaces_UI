@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM</title>
+
+<script type="text/javascript">
+	//자바스크립트도 카멜표기법
+	//css에서 id는 유일한 하나, id에서만 Element요소 하나/나머지는 Elements
+	//document는 객체화된 문서전체
+	function serchId(){
+		var doc=document.getElementById("test");
+
+		alert(doc.innerHTML);
+		//document.getElementById("test");는 테스트라는 아이디를 가진 노트 하나(object객체])
+		//id는 하나니까 첫번째로 선택된 id만 가져온 것, 뒤에 찾지못함
+		doc.innerHTML="id로 탐색합니다.";
+		doc.style.color="red";
+	}
+	
+
+	function serchName(){
+		//NodeList = array
+		var doc=document.getElementsByName("test");
+		doc[1].value = "name 속성으로 엘리먼트 탐색했습니다.";
+	}
+
+	function searchTagName(){
+		var doc = document.getElementsByTagName("p");
+		//console.log(doc);
+		//브라우저에 f12개발자 도구에서 콘솔창에 document.getElementById("test").innerHTML="재밌다";
+		doc[3].innerHTML="TagName으로 탐색됩니다.";
+		doc[3].style.color="yellowgreen";
+	}
+	
+	function searchQS(){//querySelector는 몇개가 나오든 node 하나, querySelectorAll 은 몇개가 나오든 nodelist
+		var doc=document.querySelectorAll("#test");
+		doc[0].innerHTML="querySelectAll(css표현식)";
+		var doc2=document.querySelector("#test");//제일 앞에 하나
+		doc2.style.backgroundColor="pink";
+	}
+</script>
+
+
+</head>
+<body>
+
+	<!-- Document Object Model -->
+	<!-- 도큐먼트 구조화 / 객체로 바꿈 객체 하나가 node/ 여러개가 선택되면 nodeList, 노드리스트는 Array로 되있음 -->
+	<!-- 문서 모든것이 객체, 태그들을 객체화 시킴
+	아래가 모두 문자열로 응담
+	<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Insert 
+	title here</title></head><body> Document Object Model 
+	<p>DOM 탐색 메서드</p><p>1. 엘리먼트의 id로 탐색 : 엘리먼트 하나를 선택 (중복 불가) -> 
+	반환값 : node 하나</p><p>2. 엘리먼트의 name으로 탐색 : 엘리먼트 여러개를 선택 -> 
+	반환값 : nodeList<input type="text" /><br/><input type="text" />
+	<br/><input type="text" /><br/></p><p>
+	3. 엘리먼트의 태그이름으로 탐색 : 엘리먼트 여러개를 선택 -> 반환값 : nodeList </p></body></html>
+	위에 처럼 문자열 응답, 브라우저에서 해석해서 보여줌  -->
+
+	<p onclick="searchQS();">DOM 탐색 메서드</p>
+	
+	<p id="test" onclick="serchId();">1. 엘리먼트의 id로 탐색 : 엘리먼트 하나를 선택(중복 불가) -> 반환값 : node 하나</p>
+	
+	<p onclick="serchName();">2. 엘리먼트의 name으로 탐색 : 엘리먼트 여러개를 선택 -> 반환값 : nodeList<br/>
+		<input type="text" name="test" size="100%"><br/>
+		<input type="text" name="test" size="100%"><br/>
+		<input type="text" name="test" size="100%"><br/>
+	</p>
+	
+	<p id="test" onclick="searchTagName();"> 3. 엘리먼트의 태그이름으로 탐색 : 엘리먼트 여러개를 선택 -> 반환값 : node:List</p>
+	
+</body>
+</html>

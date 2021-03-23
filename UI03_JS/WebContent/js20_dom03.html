@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom03</title>
+
+<style type="text/css">
+	img, #view{
+		width:300px;
+		height:300px;
+	}	
+
+</style>
+
+<script type="text/javascript">
+	function createImg(){
+		//1. 이름이 rdoBtn인 요소들을 가지고 온다.
+		var rdoBtn = document.getElementsByName("rdoBtn");
+		var rdoVal="";//변수선언, 아래서 사용해야함
+		
+		//2. 가져온 요소들을 반복하면서, 체크되어 있는 라디오버튼의 value를 가지고온다.
+		for (var i = 0; i<rdoBtn.length; i++){
+			if(rdoBtn[i].checked){				//만일 체크한게 있다면
+				rdoVal = rdoBtn[i].value;		//i번지 밸류값을 rdoVal에 넣음
+			}
+		}
+			
+		//3. img 태그를 만들어서, "resources/image/"+라디오버튼.value 를 넣어주자.
+		//img 태그 만들기 -> src 속성에다가 위의 경로값 넣어주기
+		var img=document.createElement("img");
+		img.setAttribute("src","resources/image/"+rdoVal);//이미지 경로 속성 만들어줌
+		
+		
+		//4. 만들어진 img 태그를 바꿔치기 하자
+		var div = document.getElementById("view");			//밑에만들어둔 div가져오기
+		var chd = document.querySelector("#view > img");	//이미지태그 만든거, ★ css 셀렉터 ★ "#view > img"는 id가 뷰인 자식요소 이미지
+		div.replaceChild(img, chd);							//바꿔치기
+		//????가 위에서 만든 img 태그
+	}
+
+	function deletImg(){
+		document.getElementById("view").innerHTML="<img />";	//innerHTML:시작태그와 끝태그 사이
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<input type="radio" name="rdoBtn" value="img07.png"/>img01<br/>
+	<input type="radio" name="rdoBtn" value="img08.png"/>img02<br/>
+	<input type="radio" name="rdoBtn" value="img09.png"/>img03<br/>
+	
+	<button onclick="createImg();">이미지 생성</button>
+	<button onclick="deletImg();">이미지 삭제</button>
+	
+	<div id="view"><img alt="" src=""/></div><!-- 선택된 라디오버튼의 이미지가 여기에 출력되고 싶어요 -->
+</body>
+</html>

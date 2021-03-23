@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Object</title>
+
+<script type="text/javascript">
+
+	function qClass(){				//외부함수
+		//this->외부에서 접근 가능
+		this.name="kh정보교육원";
+		//var->외부에서 접근 불가
+		var name02="qclass";
+		this.getName02=function(){	//내부함수
+			return name02;
+		}
+	}
+	
+	//객체 리터럴 :객체 값, K:V형태로 사용
+	var myQClass={
+			name:"qclass",
+			print: function(){
+				alert(myQClass.name + " 최고!!!");
+			}
+	}
+	
+	//프로토타입 : 객체의 확장(이미 만들어진 객체에 기능을 추가한다) 
+	//클래스명.prototype.추가할 기능 으로 새로운 기능 추가하고 객체.printName으로 사용가능
+	/*
+	MDN사이트
+	javascript number검색->Number
+	-The JavaScript global object Number
+	-Instance methods
+	추가적으로 prototype으로 연결해줌, 프로토타입은 추가로 붙일 수 있음
+	메소드 추가
+	Number.prototype.toExponential(fractionDigits)
+	
+	
+	*/
+	qClass.prototype.printName=function(){	//qclass는 프로토타입을 통해서 밑에 내용을 추가할 수 있음
+		var res="최고!!!";
+		alert(this.name+" "+this.getName02()+res);
+	}
+	
+	function objectTest(){
+		//객체 생성
+		var cls = new qClass();				//new 함수명을 쓰면 객체. 객체로 만들어줌/거기에 prototype을 사용해서 추가한다
+		// 타입 변수 = new 생성자
+		//alert(cls.name);
+		//alert(cls.name02);
+		//alert(cls.getName02());
+		
+		//alert(myQClass.name);
+		//myQClass.print();
+		cls.printName();
+		//객체.printName
+	}
+	
+	//Jabascript는 w3c
+	//ECMA Script /ES 6, 7, 8, 9,...
+ 
+	/* 
+	Frontend 개발자는 ES 6이상 공부해야 함
+	vue.js
+	react.js
+	angular.js
+	---
+	node.js
+	*/
+	
+</script>
+
+</head>
+<body>
+
+	<pre>
+	객체의 구성
+	-메서드 : 기능 정의
+	-속성 : 객체 내부 데이터
+	-this : 객체 내부의 메서드나 속성을 정의할 때 사용
+	-프로토타입 : 객체의 확장
+	</pre>
+	
+	<button onclick="objectTest();">클릭</button>
+
+</body>
+</html>

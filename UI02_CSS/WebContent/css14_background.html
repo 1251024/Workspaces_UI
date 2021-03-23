@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배경</title>
+
+<style>
+	
+	div,p{
+		width:200px;
+		height:200px;
+		border:1px solid red;
+	}
+	
+	#bg-size{
+		background:url("resources/img/img.png");
+		background-size:contain;
+		
+	}
+		/*
+		cover:한개만
+		contain:바둑판
+		*/
+	#multi-bg{
+		background-image:url("resources/img/img01.png"), url("resources/img/img02.png");
+		background-size: container;
+	}	
+	
+	#bg-clip{
+		border:10px dotted black;
+		padding: 50px;
+		background:blue;
+		background-clip:content-box;
+	}
+		/*
+		content-box:안에 실제내용만
+		padding-box:패딩까지 추가
+		border-box:테두리 라인까지 잡힘
+		*/
+	#txt-shdw{
+		text-shadow:1px 2px #ccc;
+		
+	}
+	/* 텍스트에 그림자 만들기 : 오른쪽 아래 #ccc색으로 그림자*/
+	
+	#wrap{
+		word-wrap:break-word;
+		
+	}
+	/*워드랩 속성 없으면 한줄로 쭉 나옴*/
+	
+	@font-face{
+		font-family:"Goyang";
+		src: url("resources/font/Goyang.ttf")format("truetype");
+	}
+	/*폰트 가져오기 */
+	#goyang{
+		font-family:"Goyang";
+		font-size:30pt;
+	}
+	/*폰트 적용하기 */
+</style>
+</head>
+<body>
+
+	<h1>background-size</h1>
+	<div id="bg-size">background-size</div>
+	
+	<h1>background-size</h1>
+	<div id="multi-bg">multi-background</div>
+	
+	<h1>background-clip</h1>
+	<div id="bg-clip">background-clip</div>
+	
+	<h1>text-shadow</h1>
+	<div id="txt-shdw">text-shadow</div>
+	
+	<h1>word-wrap</h1>
+	<div id="wrap">dkanrjsk akdmaeofh rmfwkTMrl dkanrjsk akdmaeofh rmfwkTMrl</div>
+	
+	<h1>font-face</h1>
+	<div id="goyang">고양시 고양체 귀엽다.</div>
+	
+</body>
+</html>

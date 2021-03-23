@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom05</title>
+<style type="text/css">
+
+	p{
+		border:1px solid red;
+	}
+
+</style>
+
+<script type="text/javascript">
+	
+	var count=1;
+	function addAppend(){	//2.함수가 p태그 생성해서 넣기
+		var fieldset = document.getElementById("addele");	//필드셋이 부모고 레전드랑 디브가 자식요소
+		
+		var p = document.createElement("p");		//<p></p>사이에 텍스트넣기
+		p.textContent = "자식요소들 중 가장 마지막에 들어갑니다." + (count++);
+		
+		fieldset.appendChild(p);	//필드셋의 자식요소들 중 밑으로 들어감 //appendChild 자식요소뒤로 넣어줌
+	}
+
+	var cnt = 1;
+	
+	function addBefore(){
+		
+		var p = document.createElement("p");
+		p.textContent = "선택된 엘리먼트의 앞에 붙여넣어요."+(cnt++);
+		
+		var div = document.querySelector("fieldset > div"); //필드셋 태그 안에 있는 div
+		//dif Uncaught ReferenceError: div is not defined
+		//Uncaught TypeError: Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'
+		var fieldset = document.getElementById("addele");
+		fieldset.insertBefore(p, div); 	//insertBeforesms div를 찾아서 p앞에 넣어줘라
+	}
+	
+	function moveElement(){
+		var ele = document.querySelector("fieldset").children[1];
+		var body = document.body;
+		body.appendChild(ele);		//끄집어내서 바디의 자식으로 만들어준다
+
+	}
+	
+	
+</script>
+
+</head>
+<body>
+
+	<h1>태그 추가하기</h1>
+	
+	<button onclick="addAppend();">appendChild()</button>		<!-- 1. 버튼클릭할때마다 -->
+	<button onclick="addBefore();">insertBefore()</button>
+	<button onclick="moveElement();">appendChild를 이용한 엘리먼트 이동</button>
+
+	<fieldset id="addele"><!-- 필드셋 안에 레전드, 레전드안에 디브-->
+		<legend>부모태그</legend>
+		<div>div 태그</div>
+	</fieldset>
+	
+	<h3>
+		문제1. test01 태그에 "dom test"라는 내용을 가진 div 태그 생성하기
+	</h3>
+	<button onclick = "addTest();">클릭 </button>
+	<h3>
+		문제2. test01 태그 안에 생성된 div 태그들을 test02 태그 안으로 이동하기
+	</h3>
+	<button onclick = "moveTest();">클릭</button>
+	
+	*test01
+	<div id = "test01"></div>
+	*test02
+	<div id = "test02"></div>
+	
+	
+	<script type="text/javascript">
+
+	var tmp =1; 
+	
+	function addTest(){
+		var div = document.createElement("div")
+		div.textContent = "dom test"+(tmp++);
+		
+		document.getElementById("test01").appendChild(div);
+		
+	}
+	
+	
+	function moveTest(){
+		var div = document.querySelector("#test01").children[0];
+		var test02 = document.querySelector("#test02");
+		test02.appendChild(div);
+	}
+	
+</script>
+</body>
+
+
+
+<style>
+	
+	#test01, #test02{
+		width :300px;
+		height:300px;
+		border:1px dotted blue;
+	}
+
+</style>
+</html>

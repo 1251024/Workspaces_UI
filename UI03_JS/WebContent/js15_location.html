@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>location</title>
+
+<script type="text/javascript">
+
+	function locationTest(){
+		//location.reload();						//reload는 새로고침
+		//location.href="http://www.naver.com";		//naver 이동
+		//location.assign("http://www.naver.com");	//href와 같음, 기능상 차이점 없음 //assign 위치지정, 할당이라는 사전적 뜻
+		location.replace("http://www.naver.com");	//전 단계 이력 삭제현재창을 리플레이스된 창으로 대신한다, 덮어씌움
+	}
+
+</script>
+
+
+</head>
+<body>
+
+
+	<a href="https://www.google.com/search?q=kh%EC%A0%95%EB%B3%B4%EA%B5%90%EC%9C%A1%EC%9B%90&oq=kh&aqs=chrome.1.69i60j0i131i433j69i57j0i3j0i131i433j69i60l3.2489j1j7&sourceid=chrome&ie=UTF-8">이동</a>
+	<!-- a 앵커태그는 링크 만들어주는 태그-->
+	
+	<button onclick="locationTest();">이동</button>
+	
+	
+	
+</body>
+</html>

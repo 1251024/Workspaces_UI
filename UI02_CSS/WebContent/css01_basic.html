@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><!--해당도큐먼트가 utf-8로 되어있다-->
+<title>기본 문법</title>
+
+<!-- <link href="css01.css" rel="stylesheet" type="text/css"/> -->
+
+<!-- 
+	hrefa:파일경로
+	rel : 연결 대상의 속성(stylesheet->스타일과 관련된 파일)
+	type:해당 파일의 정보(test로 이루어져 있으며/css기능을 한다.)
+ -->
+
+<!-- style는 사티을과 헤드사이에 (꼭 여기 아니어도 됨) -->
+<!-- 스타일쪽 선언도 순차적으로 실행해서 임포트 기능 하는애들을 위쪽에 배치 -->
+<style type="text/css">
+
+	@import url("css01.css");
+	
+	
+	p{
+		background-color:yellow;
+	}
+
+	body{
+		background-color: #96FFFF;
+	}
+	
+</style>
+</head>
+<body>
+
+	<h1>css 기본 문법</h1>
+	
+	<h3>작성방식 3가지</h3>
+	
+	
+	<b style="color:gray;">1.인라인 스타일시트: 우선순위 높다!</b>
+	<!-- b라는 태그에 스타일 지정해줄건데 컬러는 그레이야, 속성은 값인건 대부분 css(아닌것도 있음) -->
+	
+	<p>
+		<span>2. 내부 스타일시트:html 내부에 간단하게 작성</span><br/>
+		<b>3. 외부 스타일시트:css파일을 만든다.</b>
+	</p>
+	
+	<!-- span태그는 글자를 나타내는 태그  -->
+
+</body>
+</html>

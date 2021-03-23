@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>윈도우 연습01</title>
+
+<style type="text/css">
+	#regist {
+		border: 1px solid black;
+		background: pink;
+		position: absolute;
+		top: 200px;
+		left: 500px;
+		display: none;
+	}
+</style>
+
+<!-- 
+	display : none;			//공간을 차지하지 않는다 (만들어지지 않은 상태), 영역조차 없음
+	visibility: hidden;		//공간을 차지하고, 보이지 않는다 (만들어져 있는 상태)
+ -->
+
+<script type="text/javascript">
+	function openWin() {	//창열기 버튼을 눌렀을때
+		var url = "js14_window02.html";
+		var title = "myframe";//열어질 위치
+		//var title = ""; //myframe 안들어가면 새로운 창이 뜸, 맨밑에 iframe, 창이 안닫힘
+		var prop = "top=200px, left=600px, width=500px, height=500px";//속성 지정해주지 않으면 새로운 탭으로 생성, 해당 줄 주석처리 후 prop도 지워야함
+		window.open(url, title, prop); 
+		//window.open("경로", "이름", "옵션"); : 브라우저 설정 또는 매개 변수 값에 따라 브라우저 또는 새탭을 엽니다
+	}
+	
+	//getElementById:지정된 값을 가진 ID 속성이있는 요소를 반환합니다.
+	function registForm() {
+		document.getElementById("regist").style.display = "block";//안만든거 만들어라
+		document.body.style.background = "gray";//그레이색으로 바꿔라
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) { 
+			btns[i].disabled = "disabled";//버튼을 disabled속성으로 바꿔라(비활성화)
+		}
+	}
+
+
+	function closeWin() { //새 창을 열려면 open ()을 사용하고 새 창을 닫으려면 close ()를 사용합니다.
+		document.getElementById("regist").style.display = "none"; //다시 none으로 바꿔라
+		document.body.style.background = "white";//백그라운드 하얀색으로 바꿔라
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) {
+			//for (var i=0; i<btns.length; i++){와 같은것임
+			btns[i].disabled = "";//버튼의 disabled 속성을 없애라
+		}
+	}
+	
+	
+	function idchk() {
+		alert("중복체크를 확인하세요");
+	}
+
+	function idCheck() {
+		open("js14_window03.html", "", "width=300px,height=300px");
+	}
+</script>
+
+</head>
+<body>
+
+	<h1>window객체</h1><!-- 자바의 오브젝트 같은 객체,alert comfirm, prompt 다 앞에 window.이 생략된 것임 -->
+	<!-- window 객체 공부하기 -->
+	
+	<pre>
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<button onclick="openWin()" name="btn">창열기</button>
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+
+	<!-- 회원가입폼 시작 -->
+	<div id="regist"> <!-- display :none이라서 안만드는것 -->
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> <!-- readonly:읽기전용 -->
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td><!--type이 패스워드라 암호화되게 한다 -->
+					<!-- checked="checked"  체크막스일때 사용하는 속성 / alt="" 이미지에서 경로없을때 설명 -->
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td><!-- 확인버튼을 누르면 클로즈윈도우 함수를 호출 -->
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 회원가입폼 종료 -->
+
+	<br/><br/><br/>
+	<iframe name="myframe"></iframe>
+
+</body>
+</html>

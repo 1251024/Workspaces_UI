@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04.텍스트, 이미지, 링크</title>
+</head>
+<body>
+
+	<h1>TEXT</h1>
+	<!-- web 접근성 (strong, em, ...) -->
+	
+	<p>
+		<b>진하게(&lt;b&gt;)</b><br>
+		<strong>진하게(&lt;strong&gt;)</strong><br><!-- 시각장애인을 고려한다면 스트롱을 쓰는게 좋음 -->
+		<i>기울임(&lt;i&gt;)</i><br>
+		<em>기울임(&lt;em&gt;)</em><br>
+		<small>작은 텍스트 표시, 코멘트(&lt;small&gt;)</small><br>
+		윗<sup>첨자</sup>(&lt;sup&gt;)<br>
+		아래<sub>첨자</sub>(&lt;sub&gt;)<br>
+		<ins>내용 추가(&lt;ins&gt;)</ins><br>
+		<del>내용 삭제(&lt;del&gt;)</del><br>
+	</p>
+	
+	<hr>
+	<h1>IMG</h1>
+	<img alt = "img01 설명입니다." src = "resources/img/img01.jpg" width = "200px" height = "200px" title="img01.jpg임!!"/>	
+	<!-- HTTP 상태 404 ->  WebContent->  resources->img 경로에 없어서 안나오는 것임-->
+	
+	<!-- 
+		px:픽셀(해상도 별 상대크기)
+		pt:포인트(1pt = 0.72인치)
+		%, em:지정/상속 등에 대한 백분율(상대크기)
+	 -->
+	 
+	 <h3>이미지에 링크 걸기</h3>
+	 <a href="index.html" title="index로 가자!">
+	 	<img alt ="goindex" src="resources/img/img01.jpg" width="100px" height="100px"/>
+	 	<!-- html 5부터 img도 끝태그 없어도 잘된다,hr/br/img />가 없어도되는 코드 -->
+	 </a>
+	 
+	 <h3>이미지 맵</h3>
+	 <img alt = "my icon" src= "resources/img/img01.jpg" usemap="#my" width="100px" height="100px"/>
+	 
+	 <map name="my">
+	 	<area alt="go index" shape ="rect" coords="25, 25, 75, 75" href="index.html" title="인덱스 가자!!"/>
+	 	<!-- 이미지 전체에 링크 걸리는게 아니고 지정해둔 박스 크기만큼 링크가 잡힌다 -->
+	 	<!-- area 여러개 잡으면 여러개 링크 걸리고 형태도 다양하게 잡을 수 있다 -->
+	 </map>
+</body>
+</html>

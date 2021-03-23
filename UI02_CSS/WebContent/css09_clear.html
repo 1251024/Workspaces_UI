@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>float clear</title>
+
+<style type="text/css">
+
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	
+	#wrapper{
+		width:600px;
+		border:1px dotted red;
+	}
+	
+	#w01{
+		float:right;
+		width:200px;
+		padding:15px;
+		background-color:skyblue;
+	}
+	
+	#w02{
+		float:left;
+		width:200px;
+		padding:15px;
+		background-color:hotpink;
+	}
+	
+	#w03{
+		clear: both; 
+		/* left로 하면 3번 기준으로 왼쪽 흐르는 속성을 업애라 해서 밑으로 내려감, 왼쪽에 자리잡은애 밑으로 가고 오른쪽에 흐르게 됨 */
+		/* 1번은 자기위치 잡고 왼쪽에 흘러라, 2번도 왼쪽에 자기자리 잡고 오른쪽에 흘러라 인데, clear하면 흘러라 속성을 없애는것 */
+		/* right면 오른쪽 속성을 무시하겠다. 왼쪽으로만 흐르게 됨 */
+		/* both: 양쪽 다 흐르지 마라 */
+		background-color : gray;
+		padding : 10px;
+	}
+
+</style>
+
+
+</head>
+<body>
+
+	<h1>lorem ipsum</h1>
+	
+	<div id="wrapper">
+	
+		<div id="w01">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.	
+		</div>
+		
+		<div id="w02">
+			In eleifend diam non nunc euismod, eget accumsan velit cursus. Vestibulum sit amet mi quis neque hendrerit molestie. 
+			Pellentesque a rhoncus orci. Nulla vel diam congue velit accumsan tincidunt vel vitae tellus. 
+		</div>
+		
+		<div id="w03"> 
+			Vivamus tempus at mi eu luctus. Quisque nisl nibh, varius quis ex nec, pharetra porttitor tortor.
+			 Aenean aliquam iaculis purus et aliquam. Sed bibendum dictum erat fringilla tristique. 
+			 Proin egestas et massa id lobortis. Curabitur blandit consectetur ligula, nec commodo justo posuere vel. 
+			 Pellentesque dapibus augue eget dui faucibus, et blandit dui maximus.
+		</div>
+	
+	</div>
+
+</body>
+</html>
